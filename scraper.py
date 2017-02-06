@@ -21,7 +21,7 @@ class Scraper:
     def get_matches_by_tournament_name(self, t_name):
         pass
 
-    def get_matches_by_team_id(self, t_id):
+    def get_matches_by_team_name(self, t_id):
         pass
 
     def change_retriever(self, new_retriever):
@@ -56,7 +56,7 @@ class BbcScraper(Scraper):
             return_lst.append(match)
         return return_lst
 
-    def get_matches_by_team_id(self, team_name, match_status):
+    def get_matches_by_team_name(self, team_name, match_status):
         results = []
         for url in self.urls:
             html = self.data_retriever.get_page(url)
@@ -127,11 +127,5 @@ class BbcFormatParser(FormatParser):
                         status = "upcoming"
                         results.append({"home_team": home_team, "away_team": away_team, "status": status, "tournament": tournament, "start_time":start_time })
 
-        '''
-        # get all dates headers
-        all_dates = results_data.find_all('h2')
-        all_dates = [x.contents[0].strip() for x in all_dates]
-
-        '''
         return results
 

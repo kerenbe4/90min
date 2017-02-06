@@ -32,7 +32,7 @@ class Controller:
     def get_matches_by_team_id(self, t_id, match_status=None):
         res = []
         if t_id in teams.keys():
-            res.extend(self.bbc_results.get_matches_by_team_id(teams[t_id], match_status))
+            res.extend(self.bbc_results.get_matches_by_team_name(teams[t_id], match_status))
 
         return json.dumps(res)
 
